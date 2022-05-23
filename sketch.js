@@ -28,6 +28,7 @@ function setup(){
  player.addAnimation("running",runner)
  player.scale=0.5
  player.velocityX=5
+ 
  over=createSprite(150,300)
  over.addImage(OverImg)
  over.scale=0.5
@@ -56,9 +57,9 @@ player.y=World.mouseY
   if(road.x <0){
     road.x = width/2;
   }
-  var select_oppPlayer = Math.round(random(1,3));
+  var select_oppPlayer = Math.round(random(1,4));
   
-  if (frameCount % 50 == 0) {
+  if (frameCount % 100 == 0) {
     if (select_oppPlayer == 1) {
       Car1();
     } else if (select_oppPlayer == 2) {
@@ -92,9 +93,9 @@ player.y=World.mouseY
     car4.velocityY = 0;
     
   } 
-}else if (gameState === "END") {
+}else if (gameState === END) {
    over.visible = true;
-   //Add code to show restart game instrution in text here
+   
  text("press Space key",420,20)
  if (keyDown("SPACE"))
 {
@@ -123,35 +124,35 @@ player.y=World.mouseY
 
 }
 function Car1(){
-  car1 =createSprite(1100,Math.round(random(50, 250)));
+  car1 =createSprite(500,Math.round(random(50, 250)));
   car1.scale =0.90;
-  car1.velocityX = -(60 + 2*distance/150);
+  car1.velocityX = -(30 + 2*distance/150);
   car1.addImage(sedanImage);
   car1.setLifetime=170;
   carG1.add(car1);
 }
 
 function Car2(){
- car2=createSprite(1100,Math.round(random(50, 250)));
+ car2=createSprite(700,Math.round(random(50, 250)));
   car2.scale =0.90;
-  car2.velocityX = -(60 + 2*distance/150);
+  car2.velocityX = -(30 + 2*distance/150);
   car2.addImage(suvImage);
   car2.setLifetime=170;
   carG2.add(car2);
 }
 
 function Car3(){
-  car3 =createSprite(1100,Math.round(random(50, 250)));
+  car3 =createSprite(900,Math.round(random(300, 500)));
   car3.scale =0.90;
-  car3.velocityX = (-30+ 2*distance/150);
+  car3.velocityX = (-15+ 2*distance/150);
   car3.addImage(truckImage);
   car3.setLifetime=170;
   carG3.add(car3);
 }
 function Car4(){
-  car4 =createSprite(1100,Math.round(random(50, 250)));
-  car4.scale =5;
-  car4.velocityX = -(120 + 2*distance/150);
+  car4 =createSprite(1100,Math.round(random(300, 500)));
+  car4.scale =2;
+  car4.velocityX = -(50 + 2*distance/150);
   car4.addImage(supercarImage);
   car4.setLifetime=170;
   carG4.add(car4);
@@ -161,8 +162,5 @@ function reset(){
   gameState="PLAY"
   distance=0
  
-  carG1.destroyEach()
-  carG2.destroyEach()
-  carG3.destroyEach()
-  carG4.destroyEach()
+ 
 }
